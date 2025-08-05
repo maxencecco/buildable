@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout Counter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #181c14;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .counter-box {
+      background-color: #11110f;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .number {
+      color: #6fff65;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .text {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter-box">
+    <span class="number" id="count">6</span>
+    <span class="text">People are checking out now</span>
+    <img src="https://www.svgrepo.com/show/509001/cart-shopping.svg" alt="cart" class="icon" />
+  </div>
+
+  <script>
+    const countElement = document.getElementById("count");
+    let currentCount = Math.floor(Math.random() * 5) + 3; // start between 3 and 7
+
+    function renderCount() {
+      countElement.textContent = currentCount;
+    }
+
+    function fluctuate() {
+      const fluctuation = [-1, 0, 1][Math.floor(Math.random() * 3)];
+      currentCount = Math.min(Math.max(currentCount + fluctuation, 2), 7);
+      renderCount();
+    }
+
+    renderCount();
+    setInterval(fluctuate, Math.floor(Math.random() * 4000) + 6000); // 6-10s
+  </script>
+</body>
+</html>
